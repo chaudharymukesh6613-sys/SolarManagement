@@ -1,0 +1,49 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Billing System</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+💰 Billing System
+</header>
+
+<div class="container">
+
+<form>
+
+<label>Bill Number</label>
+<input type="text" value="BILL001" readonly>
+
+<label>Customer Name</label>
+<input type="text" placeholder="Customer Name">
+
+<label>Amount (₹)</label>
+<input type="number" placeholder="Amount">
+
+<label>GST (%)</label>
+<input type="number" value="18">
+
+<label>Total Amount</label>
+<input type="number" placeholder="Total Amount">
+
+<br><br>
+
+<button type="submit">Generate Bill</button>
+
+</form>
+
+<br>
+
+<a href="/dashboard">
+<button>⬅ Back Dashboard</button>
+</a>
+
+</div>
+
+</body>
+</html>

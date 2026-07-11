@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<header class="header">
+
+    <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+
+    <h1>Solar Management Dashboard</h1>
+
+</header>
+
+<div class="container">
+
+<h2>Main Menu</h2>
+
+<div class="menu">
+
+<a href="/customer"><button>👤 Customer</button></a>
+
+<a href="/panel"><button>🔋 Solar Panel</button></a>
+
+<a href="/installation"><button>🏠 Installation</button></a>
+
+<a href="/billing"><button>💰 Billing</button></a>
+
+<a href="/report"><button>📊 Reports</button></a>
+
+<a href="/"><button>🚪 Logout</button></a>
+
+</div>
+
+</div>
+
+</body>
+</html>

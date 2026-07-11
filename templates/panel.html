@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Solar Panel Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>
+🔋 Solar Panel Management
+</header>
+
+<div class="container">
+
+<form>
+
+<label>Panel Name</label>
+<input type="text" placeholder="Panel Name">
+
+<label>Company</label>
+<input type="text" placeholder="Company Name">
+
+<label>Power (Watt)</label>
+<input type="number" placeholder="Watt">
+
+<label>Price</label>
+<input type="number" placeholder="Price">
+
+<label>Stock</label>
+<input type="number" placeholder="Stock">
+
+<br><br>
+
+<button>Save Panel</button>
+
+</form>
+
+<br>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Panel</th>
+<th>Company</th>
+<th>Watt</th>
+<th>Price</th>
+<th>Stock</th>
+</tr>
+
+<tr>
+<td>1</td>
+<td>Mono Panel</td>
+<td>Tata Power</td>
+<td>550W</td>
+<td>₹18,000</td>
+<td>20</td>
+</tr>
+
+</table>
+
+<br>
+
+<a href="/dashboard">
+<button>⬅ Back Dashboard</button>
+</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header>☀ Solar Management System</header>
+<br>
+<img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+
+<div class="container">
+
+<h1>Admin Login</h1>
+
+<form action="/dashboard">
+
+<input type="text" placeholder="Username" value="BCA2026" required>
+
+<input type="password" placeholder="Password" value="BCA2026" required>
+
+<br><br>
+
+<button type="submit">Login</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    👤 Customer Management
+</header>
+
+<div class="container">
+
+<h2>Add New Customer</h2>
+
+<form action="/add_customer" method="POST">
+
+<label>Customer Name</label>
+<input type="text" name="name" placeholder="Enter Customer Name" required>
+
+<label>Mobile Number</label>
+<input type="text" name="mobile" placeholder="Enter Mobile Number" required>
+
+<label>Email</label>
+<input type="email" name="email" placeholder="Enter Email" required>
+
+<label>Address</label>
+<textarea name="address" rows="3" placeholder="Enter Address"></textarea>
+
+<label>Solar Panel Type</label>
+
+<select name="panel">
+
+<option>Monocrystalline</option>
+<option>Polycrystalline</option>
+<option>Thin Film</option>
+
+</select>
+
+<br><br>
+
+<button type="submit">💾 Save Customer</button>
+
+</form>
+
+<hr>
+
+<h2>Customer List</h2>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Mobile</th>
+<th>Email</th>
+<th>Address</th>
+<th>Panel</th>
+<th>Action</th>
+</tr>
+
+{% for c in customers %}
+
+<tr>
+
+<td>{{ c[0] }}</td>
+<td>{{ c[1] }}</td>
+<td>{{ c[2] }}</td>
+<td>{{ c[3] }}</td>
+<td>{{ c[4] }}</td>
+<td>{{ c[5] }}</td>
+
+<td>
+
+<a href="/edit_customer/{{ c[0] }}">
+<button type="button">✏ Edit</button>
+</a>
+
+<a href="/delete_customer/{{ c[0] }}">
+<button type="button">🗑 Delete</button>
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br>
+
+<a href="/dashboard">
+
+<button type="button">
+⬅ Back Dashboard
+</button>
+
+</a>
+
+</div>
+
+</body>
+</html>
