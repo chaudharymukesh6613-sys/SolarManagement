@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Edit Customer</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="header-left">
+
+<img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+
+<h1>Edit Customer</h1>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<h2>Update Customer Details</h2>
+
+<form action="/update_customer/{{ customer[0] }}" method="POST">
+
+<label>Name</label>
+
+<input type="text"
+name="name"
+value="{{ customer[1] }}"
+required>
+
+<label>Mobile</label>
+
+<input type="text"
+name="mobile"
+value="{{ customer[2] }}"
+required>
+
+<label>Email</label>
+
+<input type="email"
+name="email"
+value="{{ customer[3] }}"
+required>
+
+<label>Address</label>
+
+<textarea name="address">{{ customer[4] }}</textarea>
+
+<label>Solar Panel</label>
+
+<select name="panel">
+
+<option {% if customer[5]=='Monocrystalline' %}selected{% endif %}>
+Monocrystalline
+</option>
+
+<option {% if customer[5]=='Polycrystalline' %}selected{% endif %}>
+Polycrystalline
+</option>
+
+<option {% if customer[5]=='Thin Film' %}selected{% endif %}>
+Thin Film
+</option>
+
+</select>
+
+<br><br>
+
+<button type="submit">
+💾 Update Customer
+</button>
+
+</form>
+
+<br>
+
+<a href="/customer">
+
+<button>
+⬅ Back
+</button>
+
+</a>
+
+</div>
+
+</body>
+
+</html>

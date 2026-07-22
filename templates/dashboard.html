@@ -1,40 +1,156 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Dashboard</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Solar Management Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
+
 <header class="header">
 
-    <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+    <div class="header-left">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+        <h1>Solar Management Dashboard</h1>
+    </div>
 
-    <h1>Solar Management Dashboard</h1>
+    <div class="header-right">
+        <h3>👋 Welcome Admin</h3>
+        <h3 id="date"></h3>
+        <h3 id="time"></h3>
+    </div>
 
 </header>
 
 <div class="container">
 
-<h2>Main Menu</h2>
+    <!-- Banner -->
 
-<div class="menu">
+    <div class="banner">
 
-<a href="/customer"><button>👤 Customer</button></a>
+        <img src="{{ url_for('static', filename='images/solar.png') }}" alt="Solar Banner">
 
-<a href="/panel"><button>🔋 Solar Panel</button></a>
+        <div class="banner-text">
 
-<a href="/installation"><button>🏠 Installation</button></a>
+            <h2>☀ Welcome to Solar Management Dashboard</h2>
 
-<a href="/billing"><button>💰 Billing</button></a>
+            <p class="subtitle">
+                Manage Customers, Solar Panels, Installations,
+                Billing and Reports from one place.
+            </p>
 
-<a href="/report"><button>📊 Reports</button></a>
+        </div>
 
-<a href="/"><button>🚪 Logout</button></a>
+    </div>
+
+    <!-- Statistics Cards -->
+
+    <div class="cards">
+
+        <div class="card dashboard-card">
+            <h3>👤 Customers</h3>
+            <h1>{{ total_customers }}</h1>
+        </div>
+
+        <div class="card dashboard-card">
+            <h3>🔋 Panels</h3>
+            <h1>{{ total_panels }}</h1>
+        </div>
+
+        <div class="card dashboard-card">
+            <h3>🏠 Installations</h3>
+            <h1>{{ total_installations }}</h1>
+        </div>
+
+        <div class="card dashboard-card">
+            <h3>💰 Bills</h3>
+            <h1>{{ total_bills }}</h1>
+        </div>
+
+    </div>
+
+    <!-- Graph -->
+
+    <h2>System Overview</h2>
+
+    <div class="chart-box">
+
+        <div class="bar customer" style="height:{{ total_customers * 15 }}px;">
+            <span>{{ total_customers }}</span>
+        </div>
+
+        <div class="bar panel" style="height:{{ total_panels * 15 }}px;">
+            <span>{{ total_panels }}</span>
+        </div>
+
+        <div class="bar installation" style="height:{{ total_installations * 15 }}px;">
+            <span>{{ total_installations }}</span>
+        </div>
+
+        <div class="bar bill" style="height:{{ total_bills * 15 }}px;">
+            <span>{{ total_bills }}</span>
+        </div>
+
+    </div>
+
+    <div class="chart-labels">
+        <div>Customers</div>
+        <div>Panels</div>
+        <div>Installations</div>
+        <div>Bills</div>
+    </div>
+
+    <!-- Menu -->
+
+    <h2 class="menu-title">Management Menu</h2>
+
+    <div class="menu">
+
+        <a href="/customer"><button>👤 Customer Management</button></a>
+
+        <a href="/panel"><button>🔋 Solar Panel</button></a>
+
+        <a href="/installation"><button>🏠 Installation</button></a>
+
+        <a href="/billing"><button>💰 Billing</button></a>
+
+        <a href="/report"><button>📊 Reports</button></a>
+
+        <a href="/about"><button>ℹ️ About Project</button></a>
+
+        <a href="/"><button class="logout">🚪 Logout</button></a>
+
+    </div>
+
+    <hr style="margin:40px 0;">
+
+    <center>
+        <p style="color:#666;font-size:18px;">
+            © 2026 Solar Management System | BCA Final Year Project
+        </p>
+    </center>
 
 </div>
 
-</div>
+<script>
+
+function updateClock(){
+
+    const now = new Date();
+
+    document.getElementById("date").innerHTML =
+        "📅 " + now.toLocaleDateString();
+
+    document.getElementById("time").innerHTML =
+        "🕒 " + now.toLocaleTimeString();
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+</script>
 
 </body>
 </html>

@@ -1,32 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login</title>
+    <title>Login - Solar Management System</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<header>☀ Solar Management System</header>
-<br>
-<img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+<header class="header">
+
+    <div class="header-left">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+        <div>
+            <h1>☀ Solar Management System</h1>
+            <p style="color:white;font-size:18px;margin-top:5px;">
+                BCA Final Year Project
+            </p>
+        </div>
+    </div>
+
+    <div class="header-right">
+        <h3 id="date"></h3>
+        <h3 id="time"></h3>
+    </div>
+
+</header>
 
 <div class="container">
 
-<h1>Admin Login</h1>
+    <h1 style="font-size:50px;">Login</h1>
 
-<form action="/dashboard">
+    <form action="/login_check" method="POST">
 
-<input type="text" placeholder="Username" value="BCA2026" required>
+        <label><b>Login Type</b></label>
 
-<input type="password" placeholder="Password" value="BCA2026" required>
+        <select name="type" required>
 
-<br><br>
+            <option value="admin">Admin</option>
 
-<button type="submit">Login</button>
+            <option value="customer">Customer</option>
 
-</form>
+        </select>
+
+        <br><br>
+
+        <input
+            type="text"
+            name="userid"
+            placeholder="Enter User ID"
+            required>
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+            required>
+
+        <div style="text-align:right;margin-top:8px;">
+
+            <a href="#" style="color:#0b7d3b;font-size:18px;">
+                Forgot Password?
+            </a>
+
+        </div>
+
+        <br>
+
+        <button
+            type="submit"
+            class="enter-btn">
+
+            🔐 Login
+
+        </button>
+
+    </form>
 
 </div>
+
+<script>
+
+function updateClock(){
+
+const now=new Date();
+
+document.getElementById("date").innerHTML=
+"📅 "+now.toLocaleDateString();
+
+document.getElementById("time").innerHTML=
+"🕒 "+now.toLocaleTimeString();
+
+}
+
+setInterval(updateClock,1000);
+
+updateClock();
+
+</script>
 
 </body>
 </html>

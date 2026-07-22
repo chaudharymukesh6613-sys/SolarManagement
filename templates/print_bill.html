@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Print Bill</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body onload="window.print()">
+
+<div class="container">
+
+<h1 style="text-align:center;">☀ Solar Management System</h1>
+<hr>
+
+<h2>Invoice</h2>
+
+<table>
+
+<tr>
+<th>Bill Number</th>
+<td>{{ bill[1] }}</td>
+</tr>
+
+<tr>
+<th>Customer</th>
+<td>{{ bill[2] }}</td>
+</tr>
+
+<tr>
+<th>Amount</th>
+<td>₹ {{ bill[3] }}</td>
+</tr>
+
+<tr>
+<th>GST</th>
+<td>{{ bill[4] }}%</td>
+</tr>
+
+<tr>
+<th>Total</th>
+<td>₹ {{ bill[5] }}</td>
+</tr>
+
+</table>
+
+<br><br>
+
+<h3 style="text-align:right;">Thank You 😊</h3>
+
+</div>
+
+</body>
+</html>

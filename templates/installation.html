@@ -1,53 +1,112 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Installation</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Installation Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-<header>
-🏠 Installation Management
+<header class="header">
+
+<div class="header-left">
+
+<img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+
+<h1>🏠 Installation Management</h1>
+
+</div>
+
 </header>
 
 <div class="container">
 
-<form>
+<h2>Add New Installation</h2>
 
-<label>Customer Name</label>
-<input type="text">
+<form action="/add_installation" method="POST">
 
-<label>Installation Date</label>
-<input type="date">
+<label><b>Customer Name</b></label>
+<input type="text" name="customer_name" required>
 
-<label>Technician</label>
-<input type="text">
+<label><b>Installation Date</b></label>
+<input type="date" name="install_date" required>
 
-<label>Status</label>
+<label><b>Technician Name</b></label>
+<input type="text" name="technician" required>
 
-<select>
+<label><b>Status</b></label>
+
+<select name="status">
 
 <option>Pending</option>
-
 <option>Completed</option>
 
 </select>
 
 <br><br>
 
-<button>Save Installation</button>
+<button type="submit">💾 Save Installation</button>
 
 </form>
 
-<br>
+<hr style="margin:30px 0;">
+
+<h2>Installation List</h2>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Customer</th>
+<th>Date</th>
+<th>Technician</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+{% for i in installations %}
+
+<tr>
+
+<td>{{ i[0] }}</td>
+<td>{{ i[1] }}</td>
+<td>{{ i[2] }}</td>
+<td>{{ i[3] }}</td>
+<td>{{ i[4] }}</td>
+
+<td>
+
+<a href="/edit_installation/{{ i[0] }}">
+<button type="button">✏ Edit</button>
+</a>
+
+<a href="/delete_installation/{{ i[0] }}">
+<button type="button">🗑 Delete</button>
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br><br>
+
+<center>
 
 <a href="/dashboard">
-<button>⬅ Back Dashboard</button>
+
+<button type="button">
+⬅ Back Dashboard
+</button>
+
 </a>
+
+</center>
 
 </div>
 
 </body>
-
 </html>

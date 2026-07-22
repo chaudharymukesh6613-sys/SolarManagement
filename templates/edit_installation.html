@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Installation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-left">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+        <h1>🏠 Edit Installation</h1>
+    </div>
+</header>
+
+<div class="container">
+
+<h2>Update Installation</h2>
+
+<form action="/update_installation/{{ installation[0] }}" method="POST">
+
+<label>Customer Name</label>
+<input type="text" name="customer_name" value="{{ installation[1] }}" required>
+
+<label>Installation Date</label>
+<input type="date" name="install_date" value="{{ installation[2] }}" required>
+
+<label>Technician Name</label>
+<input type="text" name="technician" value="{{ installation[3] }}" required>
+
+<label>Status</label>
+
+<select name="status">
+    <option {% if installation[4]=='Pending' %}selected{% endif %}>Pending</option>
+    <option {% if installation[4]=='Completed' %}selected{% endif %}>Completed</option>
+</select>
+
+<br><br>
+
+<button type="submit">💾 Update Installation</button>
+
+</form>
+
+<br>
+
+<a href="/installation">
+    <button type="button">⬅ Back</button>
+</a>
+
+</div>
+
+</body>
+</html>

@@ -1,54 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Reports</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Reports</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-<header>
-📊 Reports
+<header class="header">
+
+<div class="header-left">
+<img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+<h1>📊 System Reports</h1>
+</div>
+
 </header>
 
 <div class="container">
 
-<h2>Project Report</h2>
+<h2>Solar Management System Report</h2>
 
 <table>
 
 <tr>
-<th>Details</th>
-<th>Total</th>
+<th>Report Details</th>
+<th>Total Records</th>
 </tr>
 
 <tr>
-<td>Total Customers</td>
-<td>10</td>
+<td>👤 Total Customers</td>
+<td>{{ total_customers }}</td>
 </tr>
 
 <tr>
-<td>Total Solar Panels</td>
-<td>20</td>
+<td>🔋 Total Solar Panels</td>
+<td>{{ total_panels }}</td>
 </tr>
 
 <tr>
-<td>Total Installations</td>
-<td>8</td>
+<td>🏠 Total Installations</td>
+<td>{{ total_installations }}</td>
 </tr>
 
 <tr>
-<td>Total Bills</td>
-<td>6</td>
+<td>💰 Total Bills</td>
+<td>{{ total_bills }}</td>
 </tr>
 
 </table>
 
-<br>
+<br><br>
+
+<center>
+
+<button onclick="window.print()">
+🖨 Print Report
+</button>
+
+&nbsp;&nbsp;
 
 <a href="/dashboard">
-<button>⬅ Back Dashboard</button>
+<button type="button">
+⬅ Back Dashboard
+</button>
 </a>
+
+</center>
 
 </div>
 

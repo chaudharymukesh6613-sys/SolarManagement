@@ -1,49 +1,115 @@
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>Billing System</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Billing Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
 <body>
 
-<header>
-💰 Billing System
+<header class="header">
+    <div class="header-left">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+        <h1>💰 Billing Management</h1>
+    </div>
 </header>
 
 <div class="container">
 
-<form>
+<h2>Generate New Bill</h2>
 
-<label>Bill Number</label>
-<input type="text" value="BILL001" readonly>
+<form action="/add_bill" method="POST">
 
-<label>Customer Name</label>
-<input type="text" placeholder="Customer Name">
+<label><b>Bill Number</b></label>
+<input type="text" value="Auto Generate" readonly>
 
-<label>Amount (₹)</label>
-<input type="number" placeholder="Amount">
+<label><b>Customer Name</b></label>
+<input type="text" name="customer_name" required>
 
-<label>GST (%)</label>
-<input type="number" value="18">
+<label><b>Amount (₹)</b></label>
+<input type="number" id="amount" name="amount" placeholder="Enter Amount" onkeyup="calculateTotal()" required>
 
-<label>Total Amount</label>
-<input type="number" placeholder="Total Amount">
+<label><b>GST (%)</b></label>
+<input type="number" id="gst" name="gst" value="18" onkeyup="calculateTotal()" required>
+
+<label><b>Total Amount (₹)</b></label>
+<input type="number" id="total" name="total" readonly>
 
 <br><br>
 
-<button type="submit">Generate Bill</button>
+<button type="submit">💾 Generate Bill</button>
 
 </form>
 
-<br>
+<hr style="margin:30px 0;">
 
+<h2>Billing List</h2>
+
+<table>
+
+<tr>
+    <th>ID</th>
+    <th>Bill No</th>
+    <th>Customer</th>
+    <th>Amount</th>
+    <th>GST</th>
+    <th>Total</th>
+    <th>Action</th>
+</tr>
+
+{% for b in bills %}
+
+<tr>
+
+    <td>{{ b[0] }}</td>
+    <td>{{ b[1] }}</td>
+    <td>{{ b[2] }}</td>
+    <td>₹ {{ b[3] }}</td>
+    <td>{{ b[4] }}%</td>
+    <td>₹ {{ b[5] }}</td>
+
+    <td>
+
+        <a href="/edit_bill/{{ b[0] }}">
+            <button type="button">✏ Edit</button>
+        </a>
+
+        <a href="/delete_bill/{{ b[0] }}">
+            <button type="button">🗑 Delete</button>
+        </a>
+
+        <a href="/print_bill/{{ b[0] }}">
+            <button type="button">🖨 Print</button>
+        </a>
+
+    </td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<br><br>
+
+<center>
 <a href="/dashboard">
-<button>⬅ Back Dashboard</button>
+<button type="button">⬅ Back Dashboard</button>
 </a>
+</center>
 
 </div>
+
+<script>
+function calculateTotal() {
+    var amount = parseFloat(document.getElementById("amount").value) || 0;
+    var gst = parseFloat(document.getElementById("gst").value) || 0;
+
+    var total = amount + (amount * gst / 100);
+
+    document.getElementById("total").value = total.toFixed(2);
+}
+</script>
 
 </body>
 </html>

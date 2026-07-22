@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-left">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+        <h1>Edit Solar Panel</h1>
+    </div>
+</header>
+
+<div class="container">
+
+<h2>Update Solar Panel</h2>
+
+<form action="/update_panel/{{ panel[0] }}" method="POST">
+
+<label>Panel Name</label>
+<input type="text" name="panel_name" value="{{ panel[1] }}" required>
+
+<label>Company</label>
+<input type="text" name="company" value="{{ panel[2] }}" required>
+
+<label>Power (Watt)</label>
+<input type="number" name="watt" value="{{ panel[3] }}" required>
+
+<label>Price</label>
+<input type="number" name="price" value="{{ panel[4] }}" required>
+
+<label>Stock</label>
+<input type="number" name="stock" value="{{ panel[5] }}" required>
+
+<br><br>
+
+<button type="submit">💾 Update Panel</button>
+
+</form>
+
+<br>
+
+<a href="/panel">
+<button type="button">⬅ Back</button>
+</a>
+
+</div>
+
+</body>
+</html>

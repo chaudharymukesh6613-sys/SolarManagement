@@ -7,46 +7,97 @@
 
 <body>
 
-<header>
-    <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
-    <h1>☀ Solar Management System</h1>
+<header class="header">
+
+    <div class="header-left">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+        <h1>☀ Solar Management System</h1>
+    </div>
+
+    <div class="header-right">
+        <h3 id="date"></h3>
+        <h3 id="time"></h3>
+    </div>
+
 </header>
 
-<div class="container">
+<div class="container home-card">
 
-    <h1>Welcome</h1>
+    <div class="home-left">
 
-    <h3>BCA Final Year Project</h3>
+        <img src="{{ url_for('static', filename='images/about.jpg') }}"
+             class="home-image">
 
-    <p style="text-align:center;font-size:22px;margin-top:20px;">
-        <b>Internal Guide</b>
-    </p>
+    </div>
 
-    <h2 style="text-align:center;">
-        Prof. Hemangi Ma'am Panchal
-    </h2>
+    <div class="home-right">
 
-    <br>
+        <h1>Welcome</h1>
 
-    <p style="text-align:center;font-size:22px;">
-        Developed By
-    </p>
-<h2 style="text-align:center;">
-    Mukesh - Roll No. 06<br>
-    Kundan - Roll No. 44<br>
-    Meet - Roll No. 30
-</h2>
-  
+        <h3>BCA Final Year Project</h3>
 
-    <br><br>
+        <hr>
 
-    <div style="text-align:center;">
+        <h2>Internal Guide</h2>
+
+        <h2 style="color:#0b7d3b;">
+            Prof. Hemangi Ma'am Panchal
+        </h2>
+
+        <br>
+
+        <h2>Developed By</h2>
+
+        <div class="team">
+
+            <div>
+                <h3>👤 Mukesh</h3>
+                <p>Roll No. 06</p>
+            </div>
+
+            <div>
+                <h3>👤 Kundan</h3>
+                <p>Roll No. 44</p>
+            </div>
+
+            <div>
+                <h3>👤 Meet</h3>
+                <p>Roll No. 30</p>
+            </div>
+
+        </div>
+
+        <br><br>
+
         <a href="/login">
-            <button>Enter System</button>
+            <button class="enter-btn">
+                🔓 Enter System
+            </button>
         </a>
+
     </div>
 
 </div>
+
+<script>
+
+function updateDateTime(){
+
+    const now = new Date();
+
+    document.getElementById("date").innerHTML =
+        "📅 " + now.toLocaleDateString();
+
+    document.getElementById("time").innerHTML =
+        "🕒 " + now.toLocaleTimeString();
+
+}
+
+setInterval(updateDateTime,1000);
+
+updateDateTime();
+
+</script>
 
 </body>
 </html>

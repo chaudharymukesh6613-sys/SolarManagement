@@ -4,38 +4,46 @@
     <title>Solar Panel Management</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<header>
-🔋 Solar Panel Management
+<header class="header">
+    <div class="header-left">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+        <h1>🔋 Solar Panel Management</h1>
+    </div>
 </header>
 
 <div class="container">
 
-<form>
+<h2>Add New Solar Panel</h2>
+
+<form action="/add_panel" method="POST">
 
 <label>Panel Name</label>
-<input type="text" placeholder="Panel Name">
+<input type="text" name="panel_name" required>
 
 <label>Company</label>
-<input type="text" placeholder="Company Name">
+<input type="text" name="company" required>
 
 <label>Power (Watt)</label>
-<input type="number" placeholder="Watt">
+<input type="number" name="watt" required>
 
-<label>Price</label>
-<input type="number" placeholder="Price">
+<label>Price (₹)</label>
+<input type="number" name="price" required>
 
 <label>Stock</label>
-<input type="number" placeholder="Stock">
+<input type="number" name="stock" required>
 
 <br><br>
 
-<button>Save Panel</button>
+<button type="submit">💾 Save Panel</button>
 
 </form>
 
-<br>
+<hr>
+
+<h2>Solar Panel List</h2>
 
 <table>
 
@@ -46,24 +54,47 @@
 <th>Watt</th>
 <th>Price</th>
 <th>Stock</th>
+<th>Action</th>
 </tr>
 
+{% for p in panels %}
+
 <tr>
-<td>1</td>
-<td>Mono Panel</td>
-<td>Tata Power</td>
-<td>550W</td>
-<td>₹18,000</td>
-<td>20</td>
+
+<td>{{ p[0] }}</td>
+<td>{{ p[1] }}</td>
+<td>{{ p[2] }}</td>
+<td>{{ p[3] }} W</td>
+<td>₹ {{ p[4] }}</td>
+<td>{{ p[5] }}</td>
+
+<td>
+
+<a href="/edit_panel/{{ p[0] }}">
+<button type="button">✏ Edit</button>
+</a>
+
+<a href="/delete_panel/{{ p[0] }}">
+<button type="button">🗑 Delete</button>
+</a>
+
+</td>
+
 </tr>
+
+{% endfor %}
 
 </table>
 
-<br>
+<br><br>
+
+<center>
 
 <a href="/dashboard">
-<button>⬅ Back Dashboard</button>
+<button type="button">⬅ Back Dashboard</button>
 </a>
+
+</center>
 
 </div>
 

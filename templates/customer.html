@@ -7,8 +7,13 @@
 
 <body>
 
-<header>
-    👤 Customer Management
+<header class="header">
+
+    <div class="header-left">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+        <h1>👤 Customer Management</h1>
+    </div>
+
 </header>
 
 <div class="container">
@@ -17,26 +22,24 @@
 
 <form action="/add_customer" method="POST">
 
-<label>Customer Name</label>
+<label><b>Customer Name</b></label>
 <input type="text" name="name" placeholder="Enter Customer Name" required>
 
-<label>Mobile Number</label>
+<label><b>Mobile Number</b></label>
 <input type="text" name="mobile" placeholder="Enter Mobile Number" required>
 
-<label>Email</label>
+<label><b>Email</b></label>
 <input type="email" name="email" placeholder="Enter Email" required>
 
-<label>Address</label>
+<label><b>Address</b></label>
 <textarea name="address" rows="3" placeholder="Enter Address"></textarea>
 
-<label>Solar Panel Type</label>
+<label><b>Solar Panel Type</b></label>
 
 <select name="panel">
-
-<option>Monocrystalline</option>
-<option>Polycrystalline</option>
-<option>Thin Film</option>
-
+    <option>Monocrystalline</option>
+    <option>Polycrystalline</option>
+    <option>Thin Film</option>
 </select>
 
 <br><br>
@@ -45,20 +48,32 @@
 
 </form>
 
-<hr>
+<hr style="margin:30px 0;">
+
+<form method="GET" action="/customer" style="margin-bottom:20px;">
+
+<input
+    type="text"
+    name="search"
+    placeholder="🔍 Search Customer by Name"
+    style="width:70%;">
+
+<button type="submit">Search</button>
+
+</form>
 
 <h2>Customer List</h2>
 
 <table>
 
 <tr>
-<th>ID</th>
-<th>Name</th>
-<th>Mobile</th>
-<th>Email</th>
-<th>Address</th>
-<th>Panel</th>
-<th>Action</th>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Mobile</th>
+    <th>Email</th>
+    <th>Address</th>
+    <th>Panel</th>
+    <th>Action</th>
 </tr>
 
 {% for c in customers %}
@@ -75,11 +90,12 @@
 <td>
 
 <a href="/edit_customer/{{ c[0] }}">
-<button type="button">✏ Edit</button>
+    <button type="button">✏ Edit</button>
 </a>
 
-<a href="/delete_customer/{{ c[0] }}">
-<button type="button">🗑 Delete</button>
+<a href="/delete_customer/{{ c[0] }}"
+   onclick="return confirm('Delete this customer?')">
+    <button type="button" class="logout">🗑 Delete</button>
 </a>
 
 </td>
@@ -90,15 +106,13 @@
 
 </table>
 
-<br>
+<br><br>
 
+<center>
 <a href="/dashboard">
-
-<button type="button">
-⬅ Back Dashboard
-</button>
-
+    <button type="button">⬅ Back Dashboard</button>
 </a>
+</center>
 
 </div>
 

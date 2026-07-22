@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="header-left">
+<img src="{{ url_for('static', filename='images/logo.png') }}" class="logo">
+<h1>👤 Customer Dashboard</h1>
+</div>
+
+</header>
+
+<div class="container">
+
+<h2>Welcome Customer 👋</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>🔋 Solar Panel</h3>
+<p>Monocrystalline</p>
+</div>
+
+<div class="card">
+<h3>🏠 Installation</h3>
+<p>Completed</p>
+</div>
+
+<div class="card">
+<h3>💰 Latest Bill</h3>
+<p>₹ 18,000</p>
+</div>
+
+<div class="card">
+<h3>📅 Service</h3>
+<p>Active</p>
+</div>
+
+</div>
+
+<br>
+
+<h2>Customer Details</h2>
+
+<table>
+
+<tr>
+<th>Name</th>
+<td>Krishnraj</td>
+</tr>
+
+<tr>
+<th>Mobile</th>
+<td>9996667778</td>
+</tr>
+
+<tr>
+<th>Email</th>
+<td>krishnraj123@gmail.com</td>
+</tr>
+
+<tr>
+<th>Address</th>
+<td>Visnagar</td>
+</tr>
+
+<tr>
+<th>Solar Panel</th>
+<td>Monocrystalline</td>
+</tr>
+
+<tr>
+<th>Installation Status</th>
+<td>Completed ✅</td>
+</tr>
+
+</table>
+
+<br><br>
+
+<center>
+
+<a href="/login">
+<button>🚪 Logout</button>
+</a>
+
+</center>
+
+</div>
+
+</body>
+</html>
